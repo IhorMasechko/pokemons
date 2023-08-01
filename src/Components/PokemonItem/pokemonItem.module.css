@@ -1,0 +1,4 @@
+.ability:not(:last-child)::after {
+  content: ", ";
+  width: 1em;
+}
