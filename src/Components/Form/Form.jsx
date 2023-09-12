@@ -1,4 +1,5 @@
 import { useState } from "react";
+import s from "./form.module.css";
 
 export default function Form({ setQuery }) {
   const [inputValue, setInputValue] = useState("");
@@ -12,6 +13,7 @@ export default function Form({ setQuery }) {
   return (
     <form onSubmit={formSubmitHandler}>
       <input
+        className={s.input}
         value={inputValue}
         placeholder="Type pokemon name"
         onChange={(e) => setInputValue(e.target.value)}

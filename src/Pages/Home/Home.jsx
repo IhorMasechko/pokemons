@@ -5,6 +5,8 @@ import { queryPokemon } from "../../Services/services";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, addPokemons } from "../../Redux/operations";
 import { selectPokemons } from "../../Redux/pokemonSlice";
+import { animateScroll } from "react-scroll";
+import css from "./home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -13,7 +15,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const pokemons = useSelector(selectPokemons);
-  console.log(pokemons);
 
   // useEffect(() => {
   //   setIsLoading(true);
@@ -42,14 +43,29 @@ export default function Home() {
   // useEffect(() => {
   //   dispatch(addPokemons(page));
   // }, [page]);
+  const handleLoadMore = () => {
+    setPage(page + 1);
+    smoothScroll();
+  };
+
+  const smoothScroll = () => {
+    animateScroll.scrollToBottom({
+      duration: 1000,
+      delay: 10,
+      smooth: "linear",
+    });
+  };
 
   return (
     <>
-      {error && <p>Something went wrong</p>}
-      {isLoading && <p>Loading...</p>}
-      <PokemonList pokemons={pokemons} />
-      <button onClick={() => setPage(page + 1)}>Next</button>
-      <button>Prev</button>
+      <div className={css.home}>
+        {error && <p>Something went wrong</p>}
+        {isLoading && <p>Loading...</p>}
+        <PokemonList pokemons={pokemons} />
+        <button className={css.button} onClick={() => handleLoadMore()}>
+          Next
+        </button>
+      </div>
     </>
   );
 }

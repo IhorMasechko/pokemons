@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Form from "../../Components/Form/Form";
 import { getPokemonByName } from "../../Services/services";
 import PokemonItem from "../../Components/PokemonItem/PokemonItem";
+import css from "./search.module.css";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -28,8 +29,10 @@ export default function Search() {
   }, [query]);
   return (
     <>
-      <Form setQuery={setQuery} />
-      {pokemon && <PokemonItem pokemon={pokemon} />}
+      <div className={css.search}>
+        <Form setQuery={setQuery} />
+        {pokemon && <PokemonItem pokemon={pokemon} />}
+      </div>
     </>
   );
 }

@@ -1,0 +1,21 @@
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+}
+
+.link:hover {
+  color: blue;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #2a363b;
+  background-color: black;
+}
